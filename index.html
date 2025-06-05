@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ubikado</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <span>UBIKADO</span>
+    </div>
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Todo lo que necesitas, a solo unas cuadras de distancia.</h1>
+        <div class="store-buttons">
+          <img src="img/playstore.png" alt="Google Play">
+          <img src="img/Appstore.png" alt="App Store">
+        </div>
+      </div>
+      <img class="mockup" src="img/mockup.png" alt="App Mockup">
+    </div>
+  </header>
+
+  <section class="steps">
+    <h2>Cómo funciona</h2>
+    <div class="icons">
+      <div><img src="img/descarga.png"><p>Descarga la App</p></div>
+      <div><img src="img/usuario.png"><p>Crea tu cuenta</p></div>
+      <div><img src="img/mapa.png"><p>Explora comercios</p></div>
+      <div><img src="img/tienda.png"><p>Contacta directamente</p></div>
+    </div>
+  </section>
+
+  <section class="carousel">
+  <h2>Conoce la app</h2>
+  <div class="carousel-wrapper">
+    <button class="carousel-btn prev">&#10094;</button>
+    <div class="carousel-track">
+      <img src="img/Home.png" alt="Pantalla 1">
+      <img src="img/Digital Directory.png" alt="Pantalla 2">
+      <img src="img/Search Functionality.png" alt="Pantalla 3">
+      <img src="img/Retailer Profile.png" alt="Pantalla 4">
+      <img src="img/Communication Channel.png" alt="Pantalla 5">
+      <img src="img/Proximity Promotions.png" alt="Pantalla 6">
+      <img src="img/User Profile.png" alt="Pantalla 7">
+    </div>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+</section>
+
+  <section class="testimonials">
+    <div class="testimonial-box">
+      <img src="img/Persona.png" alt="Jorge">
+      <div>
+        <h3>Gracias a UBIKADO mi bodega ha ganado muchos nuevos clientes.</h3>
+        <p>Jorge, Comerciante</p>
+      </div>
+    </div>
+    <div class="form-box">
+      <h2>Testimonios</h2>
+      <form>
+        <input type="text" placeholder="Nombre">
+        <input type="email" placeholder="Correo electrónico">
+        <textarea placeholder="Mensaje"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-contact">
+      <h3>Contáctanos</h3>
+      <p>¿Eres dueño de un negocio y quieres aparecer en la app?<br>Escríbenos y te ayudaremos en minutos.</p>
+      <p>📞 Llámanos al +51 929 381 2389</p>
+      <p>📧 Escríbenos a ubikando@gmail.com</p>
+      <p>📍 Estamos en Trujillo, Perú. Próximamente en otras sedes</p>
+    </div>
+    <div class="footer-faq">
+      <h3>Preguntas frecuentes</h3>
+      <p><strong>¿Qué es UBIKADO?</strong><br>Es una plataforma móvil diseñada para ayudar a los consumidores de Trujillo a descubrir y apoyar comercios minoristas locales.</p>
+      <p><strong>¿La aplicación tiene algún costo?</strong><br>Ubikado es gratuita para todos los usuarios. Los negocios interesados en aparecer en la app deben ponerse en contacto para coordinar su incorporación.</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<script>
+  const track = document.querySelector('.carousel-track');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+
+  let scrollPos = 0;
+  const slideWidth = 320; // ancho de cada imagen + espacio
+
+  prevBtn.addEventListener('click', () => {
+    scrollPos = Math.max(scrollPos - slideWidth * 2, 0);
+    track.style.transform = `translateX(-${scrollPos}px)`;
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const maxScroll = track.scrollWidth - document.querySelector('.carousel-wrapper').offsetWidth;
+    scrollPos = Math.min(scrollPos + slideWidth * 2, maxScroll);
+    track.style.transform = `translateX(-${scrollPos}px)`;
+  });
+</script>
+
