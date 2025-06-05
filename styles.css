@@ -1,4 +1,4 @@
-body { 
+body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: #ffffff;
@@ -16,7 +16,7 @@ h1, h2, h3 {
   font-weight: bold;
 }
 
-/* HERO INICIO */
+/* HERO */
 .hero {
   display: flex;
   flex-wrap: wrap;
@@ -24,18 +24,53 @@ h1, h2, h3 {
   align-items: center;
   background: #5e65de;
   color: white;
-  padding: 4rem 2rem;
+  padding: 3rem 1rem;
   gap: 2rem;
+  min-height: 90vh;
 }
 
 .hero-text {
-  flex: 1 1 300px;
-  max-width: 600px;
+  flex: 1 1 400px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
 }
 
-.hero-text h1 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+.subheadline {
+  font-size: 1.1rem;
   margin-bottom: 1.5rem;
+  color: #f3f3f3;
+}
+
+.tag-flotante {
+  display: inline-block;
+  background: #fff;
+  color: #5e65de;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.cta-button {
+  display: inline-block;
+  background: #ffffff;
+  color: #5e65de;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #e3e3ff;
 }
 
 .store-buttons img {
@@ -47,7 +82,7 @@ h1, h2, h3 {
   flex: 1 1 300px;
   max-width: 350px;
   height: auto;
-  margin: auto;
+  align-self: center;
 }
 
 /* SECCIÓN: CÓMO FUNCIONA */
@@ -71,6 +106,50 @@ h1, h2, h3 {
 .steps .icons img {
   height: 60px;
   margin-bottom: 0.5rem;
+}
+
+/* SECCIÓN: BENEFICIOS */
+.benefits {
+  background: #ffffff;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.benefits h2 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.benefit-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.benefit-cards div {
+  background: #f4f4f8;
+  padding: 1.5rem;
+  border-radius: 15px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.benefit-cards img {
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+.benefit-cards h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #5e65de;
+}
+
+.benefit-cards p {
+  font-size: 0.95rem;
+  color: #555;
 }
 
 /* SECCIÓN: CARRUSEL */
@@ -192,7 +271,7 @@ footer {
   min-width: 280px;
 }
 
-/* CONTAINER (para futuras secciones si necesitas centrar contenido) */
+/* CONTAINER */
 .container {
   max-width: 1200px;
   margin: auto;
