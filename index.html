@@ -10,18 +10,20 @@
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-content">
-      <div class="logo">🐣 Ubikado</div>
-      <ul class="nav-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#funciona">Cómo funciona</a></li>
-        <li><a href="#beneficios">Beneficios</a></li>
-        <li><a href="#planes">Planes</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
+<nav class="navbar">
+  <div class="nav-content">
+    <div class="logo">
+      <img src="img/Logo.png" alt="Ubikado Logo" class="logo-img">
+      <span class="logo-text">Ubikado</span>
     </div>
-  </nav>
+    <ul class="nav-links">
+      <li><a href="#funciona">Cómo funciona</a></li>
+      <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="#planes">Planes</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
 
   <!-- Hero Section -->
   <section id="inicio" class="hero">
@@ -30,7 +32,7 @@
         <span class="tag">🐣 Nuevo en Trujillo</span>
         <h1>Descubre las mejores polladas caseras cerca de ti</h1>
         <p>¿Cansado de cocinar todos los días? Encuentra polladas ricas, baratas y caseras en tu barrio. Apoya emprendedores locales mientras disfrutas del mejor sabor trujillano.</p>
-        <a href="#funciona" class="cta-button">Descubrir cómo funciona</a>
+        <a href="#funciona" class="cta-button">Estas interesado?</a>
       </div>
       <div class="hero-visual">
         <div class="phone-mockup">
@@ -170,13 +172,6 @@
       <div class="benefit-cards">
         <div class="benefit-card">
           <div class="benefit-icon">
-            <i class="fas fa-map-marked-alt"></i>
-          </div>
-          <h3>Mapa en tiempo real</h3>
-          <p>Ubica polladas activas en tu barrio sin perderte ninguna. Sistema GPS preciso que te muestra distancia y horarios.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
             <i class="fas fa-coins"></i>
           </div>
           <h3>Comida rica y barata</h3>
@@ -187,83 +182,69 @@
             <i class="fas fa-users"></i>
           </div>
           <h3>Apoya a tu comunidad</h3>
-          <p>Ayuda a vecinos que emprenden desde su casa. Cada compra fortalece la economía local de tu barrio.</p>
+          <p>Cada compra fortalece el emprendimiento de las polladas y contribuye al crecimiento económico de la comunidad.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Features Showcase -->
-  <section class="features-showcase">
-    <div class="container">
-      <h2 class="section-title">Funciones que te van a encantar</h2>
-      <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-phone">
-            <div class="phone-content">
-              <div class="feature-demo notifications">
-                <div class="notification">
-                  <i class="fas fa-bell"></i>
-                  <div>
-                    <strong>¡Nueva pollada!</strong>
-                    <p>Doña María abrió a 1 cuadra</p>
-                  </div>
-                </div>
-              </div>
+    <!-- Carrusel-->
+  <div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <div class="carousel-wrapper">
+      <div class="carousel-container" id="carousel">
+        <div class="carousel-slide active">
+          <div class="screenshot-item">
+            <div class="celular-mockup">
+              <img src="img/Mapa.png" alt="Mapa Principal">
             </div>
-          </div>
-          <div class="feature-text">
-            <h3>🔔 Notificaciones inteligentes</h3>
-            <p>Te avisamos automáticamente cuando haya una nueva pollada cerca de tu ubicación, o cuando una de tus favoritas vuelva a estar activa. Ya no necesitas revisar todo el mapa: nosotros te avisamos.
-También puedes activar notificaciones según tus preferencias, como precio, hora o zona. ¡Así nunca te pierdes un buen almuerzo de domingo!</p>
+            <div class="slide-content">
+              <h3>🗺️ Mapa en tiempo real</h3>
+              <p>Ubica polladas activas en tu barrio sin perderte ninguna. Sistema GPS preciso que te muestra distancia y horarios.</p>
+            </div>
           </div>
         </div>
         
-        <div class="feature-item reverse">
-          <div class="feature-phone">
-            <div class="phone-content">
-              <div class="feature-demo filters">
-                <div class="filter-bar">
-                  <span class="filter-chip active">📍 Menos de 1km</span>
-                  <span class="filter-chip">💰 Menos de S/20</span>
-                  <span class="filter-chip">⭐ +4.5 estrellas</span>
-                </div>
-                <div class="results">3 polladas encontradas</div>
-              </div>
+        <div class="carousel-slide">
+          <div class="screenshot-item">
+            <div class="celular-mockup">
+              <img src="img/Inicio.png" alt="Filtros">
             </div>
-          </div>
-          <div class="feature-text">
-            <h3>🎯 Filtros precisos</h3>
-            <p>Ubikado te permite aplicar filtros avanzados para encontrar justo lo que necesitas. Olvídate de buscar entre cientos de opciones. 
-                Encuentra solo las más relevantes para ti, al instante: por precio, distancia, calificación, etc</p>
+            <div class="slide-content">
+              <h3>🎯 Filtros inteligentes</h3>
+              <p>Encuentra exactamente lo que buscas con filtros por precio y distancia.</p>
+            </div>
           </div>
         </div>
-
-        <div class="feature-item">
-          <div class="feature-phone">
-            <div class="phone-content">
-              <div class="feature-demo favorites">
-                <div class="favorite-item">
-                  <i class="fas fa-heart"></i>
-                  <span>Pollada Doña Carmen</span>
-                </div>
-                <div class="favorite-item">
-                  <i class="fas fa-heart"></i>
-                  <span>El Rincón del Sabor</span>
-                </div>
-              </div>
+        
+        <div class="carousel-slide">
+          <div class="screenshot-item">
+            <div class="celular-mockup">
+              <img src="img/Catalogo.png" alt="Catalogo">
             </div>
-          </div>
-          <div class="feature-text">
-            <h3>❤️ Guarda tus favoritas</h3>
-            <p>No todas las polladas son iguales. Algunas te roban el corazón (y el hambre).</p>
-<p>Con esta función, puedes marcar las polladas que más te gustaron o que quieres probar más adelante.
-Ubikado las guardará para ti y te enviará una notificación cuando vuelvan a estar disponibles. Así, cuando "Pollada Doña Carmen" reaparezca… tú serás el primero en saberlo.</p>
+            <div class="slide-content">
+              <h3>🛍️ Catalogo Completo</h3>
+              <p>Opciones accesibles a precios comodos, directo a tu plato. Calidad casera a precios que cuidan tu bolsillo.</p>
+            </div>
           </div>
         </div>
       </div>
+      
+      <div class="carousel-nav">
+        <button class="nav-btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="nav-btn next" onclick="changeSlide(1)">❯</button>
+      </div>
+      
+      <div class="carousel-dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
     </div>
+  </div>
   </section>
+
+  
   
   <!-- Plans Section -->
   <section id="planes" class="plans">
@@ -292,11 +273,10 @@ Ubikado las guardará para ti y te enviará una notificación cuando vuelvan a e
           <p style="color: var(--naranja-pollero); font-weight: 600; margin-bottom: 1.5rem;">🎉 Oferta de lanzamiento - Solo 2 primeros meses</p>
           <ul class="plan-features">
             <li>🎟️ Descuentos semanales exclusivos</li>
-            <li>🥤 1 bebida gratis cada semana</li>
             <li>📩 Acceso anticipado a eventos populares</li>
             <li>🔔 Notificaciones personalizadas</li>
           </ul>
-          <a href="#" class="cta-button">Probar 7 días gratis</a>
+          <a href="#" class="cta-button">Unirme ahora</a>
         </div>
       </div>
     </div>
@@ -333,7 +313,7 @@ Ubikado las guardará para ti y te enviará una notificación cuando vuelvan a e
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-answer">
-            <p>Algunos polleros ofrecen delivery por un costo adicional. Puedes coordinarlo directamente con ellos.</p>
+            <p>La app ofrece servicio de delivery para que disfrutes de tu pollada favorita en casa. Algunos pedidos pueden tener un costo adicional.</p>
           </div>
         </div>
       </div>
@@ -376,7 +356,6 @@ Ubikado las guardará para ti y te enviará una notificación cuando vuelvan a e
       <div class="footer-section">
         <h3>Contacto</h3>
         <p>📧 ubikando@gmail.com</p>
-        <p>📱 WhatsApp: +51 944 123 456</p>
         <p>📍 Trujillo, La Libertad</p>
       </div>
       <div class="footer-section">
@@ -389,7 +368,6 @@ Ubikado las guardará para ti y te enviará una notificación cuando vuelvan a e
       <p>&copy; 2025 Ubikado</p>
     </div>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>

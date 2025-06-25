@@ -12,12 +12,13 @@ function initializeApp() {
     initNavbarEffects();
     initFAQToggle();
     initPhoneMapAnimation();
-    initFormValidation();
+    initFormRedirection();
     initNotificationSystem();
     initBackToTop();
     initLoadingEffects();
     initMobileMenu();
     initPlanComparison();
+    initCarousel();
 }
 
 // ==========================================
@@ -225,7 +226,7 @@ function initNotificationSystem() {
 
     // Mostrar notificaciones de ejemplo
     setTimeout(() => showNotification('¡Bienvenido a Ubikado! 🐣', 'success'), 2000);
-    setTimeout(() => showNotification('Nueva pollada disponible cerca de ti', 'info'), 8000);
+    setTimeout(() => showNotification('Disponible muy pronto!!!', 'info'), 8000);
 }
 
 function showNotification(message, type = 'info') {
@@ -272,91 +273,46 @@ function showNotification(message, type = 'info') {
     });
 }
 
+
 // ==========================================
-// 6. VALIDACIÓN DE FORMULARIOS
+// 6. REDIRECCIÓN A GOOGLE FORMS
 // ==========================================
-function initFormValidation() {
-    // Crear formulario de contacto modal si no existe
-    if (!document.querySelector('.contact-modal')) {
-        const modalHTML = `
-            <div class="contact-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1002; align-items: center; justify-content: center;">
-                <div class="modal-content" style="background: white; padding: 2rem; border-radius: 20px; max-width: 500px; width: 90%;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                        <h3>¡Únete a la beta de Ubikado!</h3>
-                        <button class="close-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
-                    </div>
-                    <form class="contact-form">
-                        <div style="margin-bottom: 1rem;">
-                            <input type="text" name="name" placeholder="Tu nombre" required style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <input type="email" name="email" placeholder="Tu email" required style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <input type="tel" name="phone" placeholder="Tu WhatsApp" style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <select name="zone" required style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px;">
-                                <option value="">Selecciona tu zona</option>
-                                <option value="centro">Trujillo Centro</option>
-                                <option value="la-esperanza">La Esperanza</option>
-                                <option value="el-porvenir">El Porvenir</option>
-                                <option value="florencia">Florencia de Mora</option>
-                                <option value="victor-larco">Víctor Larco</option>
-                            </select>
-                        </div>
-                        <button type="submit" style="width: 100%; padding: 1rem; background: var(--naranja-pollero); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
-                            ¡Quiero ser beta tester!
-                        </button>
-                    </form>
-                </div>
-            </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
-
-        // Event listeners para el modal
-        const modal = document.querySelector('.contact-modal');
-        const closeBtn = document.querySelector('.close-modal');
-        
-        // Abrir modal desde los botones CTA
-        document.querySelectorAll('.cta-button').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                modal.style.display = 'flex';
-            });
-        });
-
-        // Cerrar modal
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // Validación del formulario
-        const form = document.querySelector('.contact-form');
-        form.addEventListener('submit', (e) => {
+function initFormRedirection() {
+    // URL de tu Google Form (reemplaza con tu URL real)
+    const GOOGLE_FORM_URL = 'https://forms.gle/mnoy6Zm3HudYf9Jj9';
+    
+    // Agregar event listeners a todos los botones CTA
+    document.querySelectorAll('.cta-button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
             e.preventDefault();
             
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            // Abrir Google Form en nueva pestaña
+            window.open(GOOGLE_FORM_URL, '_blank');
             
-            // Validación básica
-            if (!data.name || !data.email || !data.zone) {
-                showNotification('Por favor completa todos los campos requeridos', 'warning');
-                return;
-            }
-
-            // Simulación de envío
-            showNotification('¡Gracias! Te contactaremos pronto 🎉', 'success');
-            modal.style.display = 'none';
-            form.reset();
+            // Opcional: También puedes redirigir en la misma pestaña
+            // window.location.href = GOOGLE_FORM_URL;
         });
-    }
+    });
+
+    // Si tienes otros botones específicos, puedes agregarlos aquí
+    document.querySelectorAll('[data-action="join-beta"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open(GOOGLE_FORM_URL, '_blank');
+        });
+    });
+}
+
+// Función alternativa más simple si solo tienes un botón
+function initSimpleRedirect() {
+    const GOOGLE_FORM_URL = 'https://forms.gle/TU_ENLACE_AQUI';
+    
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('cta-button')) {
+            e.preventDefault();
+            window.open(GOOGLE_FORM_URL, '_blank');
+        }
+    });
 }
 
 // ==========================================
@@ -450,24 +406,115 @@ function initLoadingEffects() {
 // 9. COMPARACIÓN DE PLANES
 // ==========================================
 function initPlanComparison() {
-    // Agregar funcionalidad a los botones de planes
-    document.querySelectorAll('.plan-card .cta-button').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const planCard = button.closest('.plan-card');
-            const planName = planCard.querySelector('h3').textContent;
+     const options = {
+        hoverScale: 1.08,
+        dimmedScale: 0.96,
+        animationDuration: '0.3s',
+        shadowIntensity: 0.15
+    };
+
+    document.querySelectorAll('.plan-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = `scale(${options.hoverScale}) translateY(-10px)`;
+            card.style.boxShadow = `0 20px 40px rgba(0, 0, 0, ${options.shadowIntensity})`;
+            card.style.zIndex = '10';
             
-            if (planName.includes('RompeOllas')) {
-                showNotification(`¡Excelente elección! Plan ${planName} seleccionado 🏆`, 'success');
-            } else {
-                showNotification(`Plan ${planName} seleccionado. ¡Comienza gratis! 🎉`, 'success');
-            }
+            // Dimmer other cards
+            document.querySelectorAll('.plan-card').forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.style.transform = `scale(${options.dimmedScale})`;
+                    otherCard.style.opacity = '0.7';
+                }
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            document.querySelectorAll('.plan-card').forEach(planCard => {
+                planCard.style.transform = 'scale(1)';
+                planCard.style.boxShadow = '';
+                planCard.style.opacity = '1';
+                planCard.style.zIndex = '';
+            });
         });
     });
 }
 
 // ==========================================
-// 10. FUNCIONES UTILITARIAS
+// 10. CARRUSEL INTERACTIVO
+// ==========================================
+function initCarousel() {
+    let slideIndex = 1;
+    const totalSlides = document.querySelectorAll('.carousel-slide').length || 3;
+
+    function changeSlide(direction) {
+        slideIndex += direction;
+        
+        if (slideIndex > totalSlides) {
+            slideIndex = 1;
+        }
+        if (slideIndex < 1) {
+            slideIndex = totalSlides;
+        }
+        
+        showSlide(slideIndex);
+    }
+
+    function currentSlide(n) {
+        slideIndex = n;
+        showSlide(slideIndex);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Remove active from all dots
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Show current slide
+        if (slides[n - 1]) {
+            slides[n - 1].classList.add('active');
+        }
+        
+        // Activate current dot
+        if (dots[n - 1]) {
+            dots[n - 1].classList.add('active');
+        }
+    }
+
+    // Auto-slide functionality
+    function autoSlide() {
+        changeSlide(1);
+    }
+
+    // Event listeners para botones de navegación
+    document.querySelectorAll('.carousel-prev').forEach(btn => {
+        btn.addEventListener('click', () => changeSlide(-1));
+    });
+
+    document.querySelectorAll('.carousel-next').forEach(btn => {
+        btn.addEventListener('click', () => changeSlide(1));
+    });
+
+    // Event listeners para dots
+    document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.addEventListener('click', () => currentSlide(index + 1));
+    });
+
+    // Start auto-slide every 5 seconds
+    if (totalSlides > 1) {
+        setInterval(autoSlide, 5000);
+    }
+
+    // Initialize
+    showSlide(slideIndex);
+}
+
+// ==========================================
+// 11. FUNCIONES UTILITARIAS
 // ==========================================
 
 // Detectar dispositivo móvil
@@ -514,4 +561,5 @@ console.log('Funcionalidades activas:', [
     '✅ Botón volver arriba',
     '✅ Efectos de carga',
     '✅ Menú móvil',
+    '✅ Carrusel interactivo',
 ]);
