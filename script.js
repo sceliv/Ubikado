@@ -18,7 +18,7 @@ function initializeApp() {
     initLoadingEffects();
     initMobileMenu();
     initPlanComparison();
-    initCarousel();
+    initGallery();
 }
 
 // ==========================================
@@ -440,78 +440,137 @@ function initPlanComparison() {
 }
 
 // ==========================================
-// 10. CARRUSEL INTERACTIVO
+// GALERÍA DE PESTAÑAS CORREGIDA
 // ==========================================
-function initCarousel() {
-    let slideIndex = 1;
-    const totalSlides = document.querySelectorAll('.carousel-slide').length || 3;
+function initGallery() {
+    // Verificar que los elementos existan antes de proceder
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    const progressFill = document.getElementById('progressFill');
 
-    function changeSlide(direction) {
-        slideIndex += direction;
-        
-        if (slideIndex > totalSlides) {
-            slideIndex = 1;
-        }
-        if (slideIndex < 1) {
-            slideIndex = totalSlides;
-        }
-        
-        showSlide(slideIndex);
+    // Si no hay elementos, salir de la función
+    if (tabButtons.length === 0 || tabPanels.length === 0) {
+        console.log('⚠️ Elementos de galería no encontrados');
+        return;
     }
 
-    function currentSlide(n) {
-        slideIndex = n;
-        showSlide(slideIndex);
-    }
+    console.log('🎨 Inicializando galería de pestañas...');
 
-    function showSlide(n) {
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        
-        // Hide all slides
-        slides.forEach(slide => slide.classList.remove('active'));
-        
-        // Remove active from all dots
-        dots.forEach(dot => dot.classList.remove('active'));
-        
-        // Show current slide
-        if (slides[n - 1]) {
-            slides[n - 1].classList.add('active');
-        }
-        
-        // Activate current dot
-        if (dots[n - 1]) {
-            dots[n - 1].classList.add('active');
-        }
-    }
+    // Event listeners para cada botón de pestaña
+    tabButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            // Remover clase active de todos los botones y paneles
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
 
-    // Auto-slide functionality
-    function autoSlide() {
-        changeSlide(1);
-    }
+            // Agregar clase active al botón clickeado
+            button.classList.add('active');
+            
+            // Obtener el panel correspondiente
+            const targetTab = button.getAttribute('data-tab');
+            const targetPanel = document.getElementById(targetTab);
+            
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
 
-    // Event listeners para botones de navegación
-    document.querySelectorAll('.carousel-prev').forEach(btn => {
-        btn.addEventListener('click', () => changeSlide(-1));
+            // Actualizar barra de progreso si existe
+            if (progressFill) {
+                progressFill.className = `progress-fill tab-${index + 1}`;
+            }
+
+            console.log(`📋 Pestaña cambiada a: ${targetTab}`);
+        });
     });
 
-    document.querySelectorAll('.carousel-next').forEach(btn => {
-        btn.addEventListener('click', () => changeSlide(1));
-    });
+    // Auto-cambio de pestañas (opcional)
+    let currentTab = 0;
+    let autoSwitchInterval = null;
 
-    // Event listeners para dots
-    document.querySelectorAll('.dot').forEach((dot, index) => {
-        dot.addEventListener('click', () => currentSlide(index + 1));
-    });
+    const autoSwitch = () => {
+        if (tabButtons.length > 0) {
+            currentTab = (currentTab + 1) % tabButtons.length;
+            tabButtons[currentTab].click();
+        }
+    };
 
-    // Start auto-slide every 5 seconds
-    if (totalSlides > 1) {
-        setInterval(autoSlide, 5000);
+    // Función para iniciar auto-cambio
+    const startAutoSwitch = () => {
+        if (autoSwitchInterval) clearInterval(autoSwitchInterval);
+        autoSwitchInterval = setInterval(autoSwitch, 5000);
+    };
+
+    // Función para detener auto-cambio
+    const stopAutoSwitch = () => {
+        if (autoSwitchInterval) {
+            clearInterval(autoSwitchInterval);
+            autoSwitchInterval = null;
+        }
+    };
+
+    // Pausar auto-cambio al hacer hover sobre las pestañas
+    const tabsContainer = document.querySelector('.tabs-gallery');
+    if (tabsContainer) {
+        tabsContainer.addEventListener('mouseenter', stopAutoSwitch);
+        tabsContainer.addEventListener('mouseleave', startAutoSwitch);
     }
 
-    // Initialize
-    showSlide(slideIndex);
+    // Descomentar para activar auto-cambio
+    // startAutoSwitch();
+
+    // Navegación con teclado
+    document.addEventListener('keydown', (e) => {
+        // Solo funcionar si hay pestañas visibles
+        if (document.querySelector('.tabs-gallery:hover') || document.activeElement.classList.contains('tab-button')) {
+            const activeIndex = Array.from(tabButtons).findIndex(btn => btn.classList.contains('active'));
+            
+            if (e.key === 'ArrowLeft' && activeIndex > 0) {
+                e.preventDefault();
+                tabButtons[activeIndex - 1].click();
+            } else if (e.key === 'ArrowRight' && activeIndex < tabButtons.length - 1) {
+                e.preventDefault();
+                tabButtons[activeIndex + 1].click();
+            }
+        }
+    });
+
+    // Soporte para navegación táctil (swipe) en móviles
+    if (isMobile()) {
+        let startX = 0;
+        let startY = 0;
+        const tabsContent = document.querySelector('.tabs-content');
+        
+        if (tabsContent) {
+            tabsContent.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            });
+
+            tabsContent.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                const diffX = startX - endX;
+                const diffY = startY - endY;
+
+                // Solo procesar swipes horizontales
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                    const activeIndex = Array.from(tabButtons).findIndex(btn => btn.classList.contains('active'));
+                    
+                    if (diffX > 0 && activeIndex < tabButtons.length - 1) {
+                        // Swipe izquierda -> siguiente pestaña
+                        tabButtons[activeIndex + 1].click();
+                    } else if (diffX < 0 && activeIndex > 0) {
+                        // Swipe derecha -> pestaña anterior
+                        tabButtons[activeIndex - 1].click();
+                    }
+                }
+            });
+        }
+    }
+
+    console.log('✅ Galería de pestañas inicializada correctamente');
 }
+
 
 // ==========================================
 // 11. FUNCIONES UTILITARIAS
@@ -561,5 +620,5 @@ console.log('Funcionalidades activas:', [
     '✅ Botón volver arriba',
     '✅ Efectos de carga',
     '✅ Menú móvil',
-    '✅ Carrusel interactivo',
+    '✅ Galeria interactiva',
 ]);

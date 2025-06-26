@@ -6,24 +6,25 @@
   <title>Ubikado - La App de las Polladas</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="icon" href="img/Logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navigation -->
-<nav class="navbar">
-  <div class="nav-content">
-    <div class="logo">
-      <img src="img/Logo.png" alt="Ubikado Logo" class="logo-img">
-      <span class="logo-text">Ubikado</span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#funciona">Cómo funciona</a></li>
-      <li><a href="#beneficios">Beneficios</a></li>
-      <li><a href="#planes">Planes</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </div>
-</nav>
+<!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="img/Logo.png" alt="Ubikado Logo" class="logo-img">
+                <span class="logo-text">Ubikado</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#funciona">Cómo funciona</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#planes">Planes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
 
   <!-- Hero Section -->
   <section id="inicio" class="hero">
@@ -38,68 +39,7 @@
         <div class="phone-mockup">
           <div class="phone-screen">
             <div class="screen-content">
-              <!-- Header del mapa -->
-              <div class="map-header">
-                <h3>Polladas cerca de ti</h3>
-                <div class="location-indicator">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Trujillo Centro</span>
-                </div>
-              </div>
-              
-              <!-- Mapa visual -->
-              <div class="map-container">
-                <div class="map-background">
-                  <!-- Calles simuladas -->
-                  <div class="street horizontal" style="top: 20%; left: 0; width: 100%;"></div>
-                  <div class="street horizontal" style="top: 60%; left: 0; width: 100%;"></div>
-                  <div class="street vertical" style="left: 30%; top: 0; height: 100%;"></div>
-                  <div class="street vertical" style="left: 70%; top: 0; height: 100%;"></div>
-                  
-                  <!-- Marcadores de polladas -->
-                  <div class="pollada-marker active" style="top: 25%; left: 40%;">
-                    <i class="fas fa-drumstick-bite"></i>
-                    <div class="marker-popup">
-                      <span>Pollada Doña Carmen</span>
-                      <small>S/ 12 - 4.8⭐</small>
-                    </div>
-                  </div>
-                  
-                  <div class="pollada-marker" style="top: 45%; left: 60%;">
-                    <i class="fas fa-drumstick-bite"></i>
-                    <div class="marker-popup">
-                      <span>El Rincón del Sabor</span>
-                      <small>S/ 15 - 4.5⭐</small>
-                    </div>
-                  </div>
-                  
-                  <div class="pollada-marker" style="top: 70%; left: 25%;">
-                    <i class="fas fa-drumstick-bite"></i>
-                    <div class="marker-popup">
-                      <span>Pollos Crazy</span>
-                      <small>S/ 22.90 - 4.9⭐</small>
-                    </div>
-                  </div>
-                  
-                  <!-- Marcador de ubicación del usuario -->
-                  <div class="user-location" style="top: 50%; left: 50%;">
-                    <div class="user-pulse"></div>
-                    <i class="fas fa-circle"></i>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Lista de polladas -->
-              <div class="polladas-list">
-                <div class="pollada-item featured">
-                  <div class="pollada-icon">🍗</div>
-                  <div class="pollada-info">
-                    <h4>El Rinconcito</h4>
-                    <p>2 cuadras • S/ 17.90</p>
-                  </div>
-                  <div class="pollada-rating">4.8⭐</div>
-                </div>
-              </div>
+              <img src="img/Fondo.png" alt="Filtros">
             </div>
           </div>
         </div>
@@ -169,6 +109,14 @@
   <section id="beneficios" class="benefits">
     <div class="container">
       <h2 class="section-title">¿Qué ofrece Ubikado?</h2>
+
+        <div class="video-container">
+          <video controls>
+            <source src="img/Promocion.mp4" type="video/mp4">
+          </video>
+      </div>
+    
+
       <div class="benefit-cards">
         <div class="benefit-card">
           <div class="benefit-icon">
@@ -181,71 +129,80 @@
           <div class="benefit-icon">
             <i class="fas fa-users"></i>
           </div>
-          <h3>Apoya a tu comunidad</h3>
+          <h3>Apoyar a tu comunidad</h3>
           <p>Cada compra fortalece el emprendimiento de las polladas y contribuye al crecimiento económico de la comunidad.</p>
         </div>
       </div>
     </div>
 
-    <!-- Carrusel-->
-  <div class="container">
+    <!-- Galleria-->
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <div class="carousel-wrapper">
-      <div class="carousel-container" id="carousel">
-        <div class="carousel-slide active">
-          <div class="screenshot-item">
-            <div class="celular-mockup">
-              <img src="img/Mapa.png" alt="Mapa Principal">
-            </div>
-            <div class="slide-content">
-              <h3>🗺️ Mapa en tiempo real</h3>
-              <p>Ubica polladas activas en tu barrio sin perderte ninguna. Sistema GPS preciso que te muestra distancia y horarios.</p>
-            </div>
-          </div>
+    <div class="tabs-gallery">
+        <!-- Header con pestañas -->
+        <div class="tabs-header">
+            <button class="tab-button active" data-tab="filtros">
+                🎯 Filtros Inteligentes
+            </button>
+            <button class="tab-button" data-tab="catalogo">
+                🛍️ Catálogo Completo
+            </button>
+            <button class="tab-button" data-tab="historial">
+                🚀 Historial de Pedidos
+            </button>
         </div>
         
-        <div class="carousel-slide">
-          <div class="screenshot-item">
-            <div class="celular-mockup">
-              <img src="img/Inicio.png" alt="Filtros">
-            </div>
-            <div class="slide-content">
-              <h3>🎯 Filtros inteligentes</h3>
-              <p>Encuentra exactamente lo que buscas con filtros por precio y distancia.</p>
-            </div>
-          </div>
+        <!-- Barra de progreso -->
+        <div class="progress-bar">
+            <div class="progress-fill tab-1" id="progressFill"></div>
         </div>
-        
-        <div class="carousel-slide">
-          <div class="screenshot-item">
-            <div class="celular-mockup">
-              <img src="img/Catalogo.png" alt="Catalogo">
-            </div>
-            <div class="slide-content">
-              <h3>🛍️ Catalogo Completo</h3>
-              <p>Opciones accesibles a precios comodos, directo a tu plato. Calidad casera a precios que cuidan tu bolsillo.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="carousel-nav">
-        <button class="nav-btn prev" onclick="changeSlide(-1)">❮</button>
-        <button class="nav-btn next" onclick="changeSlide(1)">❯</button>
-      </div>
-      
-      <div class="carousel-dots">
-        <span class="dot active" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-      </div>
-    </div>
-  </div>
-  </section>
 
-  
-  
+        <!-- Contenido de las pestañas -->
+        <div class="tabs-content">
+            <!-- Panel 1: Filtros -->
+            <div class="tab-panel active" id="filtros">
+                <div class="feature-content">
+                    <div class="feature-image">
+                        <img src="img/Filtros.png" alt="Filtros">
+                    </div>
+                    <div class="feature-info">
+                        <h3>🎯 Filtros Inteligentes</h3>
+                        <p>Encuentra exactamente lo que buscas con filtros por precio y distancia. Nuestra tecnología de búsqueda avanzada te ayuda a localizar las mejores opciones cerca de ti.</p>
+                        <div class="feature-badge">Búsqueda Inteligente</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 2: Catálogo -->
+            <div class="tab-panel" id="catalogo">
+                <div class="feature-content">
+                    <div class="feature-image">
+                        <img src="img/Catalogo.png" alt="Catalogo">
+                    </div>
+                    <div class="feature-info">
+                        <h3>🛍️ Catálogo Completo</h3>
+                        <p>Opciones accesibles a precios cómodos, directo a tu plato. Calidad casera a precios que cuidan tu bolsillo. Descubre una amplia variedad de platos deliciosos.</p>
+                        <div class="feature-badge">Precios Accesibles</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 3: Historial -->
+            <div class="tab-panel" id="historial">
+                <div class="feature-content">
+                    <div class="feature-image">
+                        <img src="img/Historial.png" alt="Pedidos">
+                    </div>
+                    <div class="feature-info">
+                        <h3>🚀 Historial de Pedidos</h3>
+                        <p>Te permitimos revisar cada uno de tus pedidos realizados, para que lleves una mejor cuenta. Mantén el control total de tus compras y reordena fácilmente tus favoritos.</p>
+                        <div class="feature-badge">Control Total</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>  
   <!-- Plans Section -->
   <section id="planes" class="plans">
     <div class="container">
@@ -355,7 +312,7 @@
       </div>
       <div class="footer-section">
         <h3>Contacto</h3>
-        <p>📧 ubikando@gmail.com</p>
+        <p>📧 ubikado@gmail.com</p>
         <p>📍 Trujillo, La Libertad</p>
       </div>
       <div class="footer-section">
